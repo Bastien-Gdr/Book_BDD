@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Bienvenue sur notre Base de Données !
+{% endblock %}
+
+{% block body %}
+  
+<div class="card col-6 offset-3 my-5">
+  <div class="card-body">
+    <h4 class="card-title">Ajouter un livre</h4>
+     <div class="col-10 offset-1">
+
+        {{form_start(form)}}
+        {{form_widget(form)}}
+
+
+        <button type="submit" class="btn btn-secondary mt-3 text-center">Enregistrer</button>
+
+        {{form_end(form)}}
+        </div>
+  </div>
+</div>
+
+
+{% endblock %}
