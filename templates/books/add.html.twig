@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello BooksController!{% endblock %}
+
+{% block body %}
+	<div class="col-10 offset-1 my-5">
+		<div class="card border-success col-6 mx-auto">
+
+				<div class="card-body">
+					<h3>Ajouter un livre</h3>
+                    {{ form_start(form)}}
+                    {{ form_widget(form)}}
+
+                    <button type="submit" class="btn btn-primary">Ajouter</button>
+
+                    {{ form_end(form)}}
+				</div>
+
+		</div>
+	</div>
+{% endblock %}

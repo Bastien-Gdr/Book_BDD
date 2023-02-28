@@ -4,22 +4,65 @@
 {% endblock %}
 
 {% block body %}
-  
-<div class="card col-6 offset-3 my-5">
-  <div class="card-body">
-    <h4 class="card-title">Ajouter un livre</h4>
-     <div class="col-10 offset-1">
 
-        {{form_start(form)}}
-        {{form_widget(form)}}
-
-
-        <button type="submit" class="btn btn-secondary mt-3 text-center">Enregistrer</button>
-
-        {{form_end(form)}}
-        </div>
-  </div>
-</div>
-
-
-{% endblock %}
+	<div class="col-10 offset-1 d-flex justify-content-between my-5">
+		<div class="card border-success text-center col-3">
+			<a href="{{ path('add_book') }}">
+				<div class="card-body">
+					<h4 class="card-title">Ajouter un livre</h4>
+					<h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+					<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+				</div>
+			</a>
+		</div>
+		<div class="card border-warning text-center col-3">
+			<a href="{{ path('update_book',{'id' : 127 }) }}">
+				<div class="card-body">
+					<h4 class="card-title">Modifier un livre</h4>
+					<h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+					<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+				</div>
+			</a>
+		</div>
+		<div class="card border-danger text-center col-3">
+			<a href="#">
+				<div class="card-body">
+					<h4 class="card-title">Supprimer un livre</h4>
+					<h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+					<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+				</div>
+			</a>
+		</div>
+	</div>
+	<div class="ligne2 col-10 offset-1 d-flex justify-content-evenly my-5">
+		<div class="card border-primary text-center col-3">
+			<div class="card-body">
+				<h4 class="card-title">Suggestion d'un livre</h4>
+				<h6 class="card-subtitle mb-2 text-muted">On essaye ?</h6>
+				<p class="card-text">Si choisir un livre est trop compliqué, je vous propose quelques suggestions qui pourraient vous interesser.</p>
+				<a href="#" class="card-link">Card link</a>
+				<a href="#" class="card-link">Another link</a>
+			</div>
+		</div>
+		<div class="card border-info text-center col-3">
+			<div class="card-body">
+				<h4 class="card-title">Suggestion d'auteur</h4>
+				<h6 class="card-subtitle mb-2 text-muted">On essaye ?</h6>
+				<p class="card-text">Si choisir un livre est trop compliqué, je vous propose quelques suggestions qui pourraient vous interesser.</p>
+				<a href="#" class="card-link">Card link</a>
+				<a href="#" class="card-link">Another link</a>
+			</div>
+		</div>
+	</div>
+	<div class="col-3 mb-5 mx-auto">
+		<div class="card border-secondary text-center">
+			<div class="card-body">
+				<h4 class="card-title">Gestion des emprunts</h4>
+				<h6 class="card-subtitle mb-2 text-muted">On fait un point ?</h6>
+				<p class="card-text">Votre bonté vous mène à préter des livres, ici vous pouver faire le point.</p>
+				<a href="#" class="card-link">Nouvel emprunt</a>
+				<a href="#" class="card-link">Fin emprunt</a>
+			</div>
+		</div>
+	</div>
+</div>{% endblock %}

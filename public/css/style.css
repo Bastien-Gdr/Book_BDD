@@ -1,5 +1,7 @@
-a{text-decoration: none;color:black}
-.footer{color:black;min-height: 3em;}
+a{text-decoration: none;color:white;}
+.footer{color:black;min-height: 5em;}
 .nav-link{font-size: larger;}
 .caroussel .item .active{max-height: 30%;}
+
+.card:hover{background-color: grey;}
 
