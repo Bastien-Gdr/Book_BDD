@@ -1,21 +1,115 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello BooksController!{% endblock %}
+{% block title %}Hello BooksController!
+{% endblock %}
 
 {% block body %}
 	<div class="col-10 offset-1 my-5">
+	           {% for label,messages in app.flashes %}
+
+              <div class="container">
+                  <div class="alert alert-{{ label }}"> 
+                      {% for message in messages %}
+                        <p>{{ message | raw }}</p>
+                      {% endfor %}
+                  </div>
+              </div>
+
+            {% endfor %}
 		<div class="card border-success col-6 mx-auto">
 
-				<div class="card-body">
-					<h3>Ajouter un livre</h3>
-                    {{ form_start(form)}}
-                    {{ form_widget(form)}}
+			<div class="card-body">
 
-                    <button type="submit" class="btn btn-primary">Ajouter</button>
 
-                    {{ form_end(form)}}
+
+				{{ form_start(form)}}
+				<h3>Ajouter un livre</h3>
+
+				<div id="formPage1">
+					{{ form_row(form.Ordre)}}
+					{{ form_row(form.Auteur)}}
+					{{ form_row(form.Titre)}}
+					{{ form_row(form.Editeur)}}
+					{{ form_row(form.Poche)}}
+					{{ form_row(form.Annee)}}
+					{{ form_row(form.ISBN)}}
+					<div class="text-center">
+						<button id="suivant" class="btn btn-secondary">Suivant</button>
+					</div>
 				</div>
+				<div id="formPage2" class="d-none">
+					{{ form_row(form.Distinction)}}
+					{{ form_row(form.Collection)}}
+					{{ form_row(form.Numero)}}
+					{{ form_row(form.Tome)}}
+					{{ form_row(form.Cycle)}}
+					{{ form_row(form.Genre)}}
+					{{ form_row(form.SousGenre)}}
+					{{ form_row(form.NoteCath)}}
+					<div class="text-center">
+						<button id="suivant2" class="btn btn-secondary">Suivant</button>
+					</div>
+				</div>
+				<div id="formPage3" class="d-none">
+					{{ form_row(form.NoteBruno)}}
+					{{ form_row(form.Commentaires)}}
+					{{ form_row(form.Nationalite)}}
+					{{ form_row(form.TitreOriginal)}}
+					{{ form_row(form.Date)}}
+					<div class="text-center">
+						<button id="suivant3" class="btn btn-secondary">Suivant</button>
+					</div>
+				</div>
+				<div id="formPage4" class="d-none">
+					{{ form_row(form.Emprunteur)}}
+					{{ form_row(form.DateDebut)}}
+					{{ form_row(form.DateFin)}}
+					{{ form_row(form.Fiche)}}
+					{{ form_row(form.MotsClefs)}}
+
+					<div class="text-center">
+						<button type="submit" class="btn btn-primary">Ajouter</button>
+					</div>
+				</div>
+
+
+				{{ form_end(form)}}
+			</div>
 
 		</div>
 	</div>
+{% endblock %}
+
+{% block javascripts %}
+	<script>
+
+		var button = document.getElementById('suivant');
+
+button.addEventListener('click', event => {
+
+document.getElementById("formPage2").classList.add("d-block");
+document.getElementById("formPage2").classList.remove("d-none");
+document.getElementById("formPage1").classList.add("d-none");
+});
+
+var button = document.getElementById('suivant2');
+
+button.addEventListener('click', event => {
+
+document.getElementById("formPage3").classList.add("d-block");
+document.getElementById("formPage3").classList.remove("d-none");
+document.getElementById("formPage2").classList.add("d-none");
+});
+
+var button = document.getElementById('suivant3');
+
+button.addEventListener('click', event => {
+
+document.getElementById("formPage4").classList.add("d-block");
+document.getElementById("formPage4").classList.remove("d-none");
+document.getElementById("formPage3").classList.add("d-none");
+});
+	</script>
+
+
 {% endblock %}

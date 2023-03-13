@@ -4,4 +4,4 @@ a{text-decoration: none;color:white;}
 .caroussel .item .active{max-height: 30%;}
 
 .card:hover{background-color: grey;}
-
+.card{background-image: url(../images/livre-2.jpg);}

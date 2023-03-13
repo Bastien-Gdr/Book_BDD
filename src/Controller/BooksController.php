@@ -14,29 +14,30 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class BooksController extends AbstractController
 {
     #[Route('/add/book', name: 'add_book')]
-    public function add(Request $request, EntityManagerInterface $manager): Response
+    public function add1(Request $request, EntityManagerInterface $manager): Response
     {
         $book = new Books;
-
+       
         $form = $this->createForm(BookType::class,$book);
-
         $form->handleRequest($request);
+        
+            // The form was filled, manage it...
+            if($form->isSubmitted() && $form->isValid()) {
+                $manager->persist($book); // Persist the first part of your ad object
+               $manager->flush();
 
-        if($form->isSubmitted() && $form->isValid()){
-            $book = $form->getData();
-            $manager->persist($book);
-            $manager->flush();
+               $this->addFlash('success','Le livre a bien été ajouté !');
 
-            $this->addFlash('success','Le livre a bien été ajouté à la base');
+               return $this->redirectToRoute('add_book');
+            }
 
-            return $this->redirectToRoute('books/add.html.twig');
-        }
 
         return $this->render('books/add.html.twig', [
             'controller_name' => 'BooksController',
             'form' => $form
         ]);
     }
+
 
     #[Route('/update/book/{id}', name: 'update_book')]
     public function updateBook($id,BooksRepository $repo, EntityManagerInterface $manager, Request $request)
